@@ -1,3 +1,8 @@
 {
-  "default": {}
+  "default": {
+    "fredemmott-gui": {
+      "baseline": "2025-07-01",
+      "port-version": 0
+    }
+  }
 }
