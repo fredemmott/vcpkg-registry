@@ -27,3 +27,14 @@ vcpkg_cmake_install()
 
 vcpkg_install_copyright(FILE_LIST "${SOURCE_PATH}/LICENSE" "${SOURCE_PATH}/third-party/microsoft-ui-xaml/LICENSE")
 file(INSTALL "${CMAKE_CURRENT_LIST_DIR}/usage" DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}")
+
+# merge debug and release, and put in share/${PORT}/cmake
+vcpkg_cmake_config_fixup(CONFIG_PATH "lib/cmake/fredemmott-gui")
+# vcpkg wants tools in tools/, not bin/
+vcpkg_copy_tools(TOOL_NAMES xaml-to-fui-statictheme AUTO_CLEAN)
+# Shared between debug and release builds
+file(
+  REMOVE_RECURSE
+  "${CURRENT_PACKAGES_DIR}/debug/share"
+  "${CURRENT_PACKAGES_DIR}/debug/include"
+)
