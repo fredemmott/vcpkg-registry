@@ -32,7 +32,7 @@ vcpkg format-manifest $VcpkgPath
 
 $WebRequest = Invoke-WebRequest -Uri $TarballURL -UseBasicParsing
 
-$Config.Commit = $Commit
+$Config.commit = $Commit
 $Config.sha512 = (Get-FileHash -InputStream $WebRequest.RawContentStream -Algorithm "SHA512").Hash.ToLower()
 (ConvertTo-Json $Config).Replace("`r`n","`n") | Set-Content $ConfigPath -Encoding utf8NoBOM
 
