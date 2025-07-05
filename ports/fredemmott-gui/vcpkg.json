@@ -14,6 +14,9 @@
       "version>=": "3.2.1"
     }
   ],
+  "default-features": [
+    "direct2d"
+  ],
   "features": {
     "direct2d": {
       "description": "Enable support for Direct2D+DirectWrite+D3D11"
