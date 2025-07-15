@@ -3,6 +3,10 @@
     "fredemmott-gui": {
       "baseline": "2025-07-14",
       "port-version": 0
+    },
+    "magic-args": {
+      "baseline": "2025-07-15",
+      "port-version": 0
     }
   }
 }
