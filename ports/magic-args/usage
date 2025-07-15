@@ -1,0 +1,4 @@
+magic-args provides CMake targets:
+
+    find_package(magic_args CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE magic_args::magic_args)
