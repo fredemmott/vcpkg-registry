@@ -1,0 +1,17 @@
+{
+  "name": "compressed-embed",
+  "version-date": "2025-07-16",
+  "license": "MIT",
+  "supports": "windows",
+  "dependencies": [
+    "glaze",
+    {
+      "name": "vcpkg-cmake",
+      "host": true
+    },
+    {
+      "name": "vcpkg-cmake-config",
+      "host": true
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+compressed-embed provides CMake targets:
+
+    find_package(compressed-embed CONFIG REQUIRED)
+    target_link_libraries(main PRIVATE compressed-embed::runtime)
+
+It also provides a code generation tool:
+
+    find_package(compressed-embed CONFIG REQUIRED)
+    find_program(COMPRESSED_EMBED_EXE compressed-embed REQUIRED)
+
+It also provides a helper CMake function:
+
+    find_package(compressed-embed CONFIG REQUIRED)
+    include(CompressedEmbed)
+    add_compressed_embed_library(
+      MyEmbed
+      CLASSNAME "MyEmbed"
+      OUTPUT_CPP "${CMAKE_CURRENT_BINARY_DIR}/embed.cpp"
+      OUTPUT_HPP "${CMAKE_CURRENT_BIANRY_DIR}/include/embed.hpp"
+      INPUTS
+      Foo "${CMAKE_CURRENT_SOURCE_DIR}/foo.txt"
+    )
+    target_include_directories(MyEmbed PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/include")
+    target_link_libraries(main PRIVATE MyEmbed)
