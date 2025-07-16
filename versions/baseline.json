@@ -1,5 +1,9 @@
 {
   "default": {
+    "compressed-embed": {
+      "baseline": "2025-07-16",
+      "port-version": 0
+    },
     "fredemmott-gui": {
       "baseline": "2025-07-16",
       "port-version": 0
