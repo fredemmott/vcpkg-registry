@@ -69,7 +69,7 @@ vcpkg `
   --all --verbose
 
 git add versions
-git commit versions -m "Update versions/ for ${Port}@{$Commit}"
+git commit versions -m "Update versions/ for ${Port}@${Commit}"
 $EndRev = $(git rev-parse HEAD)
 git log --patch "${StartRev}..${EndRev}"
 echo "git log --patch `"${StartRev}..${EndRev}`""
