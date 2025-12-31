@@ -1,6 +1,6 @@
 {
   "repo": "fredemmott/magic_args",
   "branch": "develop",
-  "sha512": "ed89bf1d834ed5c053c436387604cbd27387cf014fc2de969bf557522fb47da8b6b599c9607694f9b99d5f829133683e524ae23ac909c9064e509e7b8b0056c2",
-  "release": "v0.2.1"
+  "sha512": "c228ba9fb795e3f15c468ec4a194a5caedd3eea723ea2a90d40dfc9b88b6826df7c496e69a069caf283dfbc268f6c2d2b66c2e98fb7c2e92eb5bae25c44f3bf3",
+  "commit": "3670b7fea8a1c2454624ffec6d6ba9bb9927def0"
 }
