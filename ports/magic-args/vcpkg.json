@@ -13,5 +13,26 @@
       "name": "vcpkg-cmake-config",
       "host": true
     }
-  ]
+  ],
+  "default-features": [
+    "charset-conversion",
+    "magic-enum"
+  ],
+  "features": {
+    "charset-conversion": {
+      "description": "Support converting argv to UTF-8 on all platforms",
+      "dependencies": [
+        {
+          "name": "libiconv",
+          "platform": "!windows"
+        }
+      ]
+    },
+    "magic-enum": {
+      "description": "Integration with magic_enum",
+      "dependencies": [
+        "magic-enum"
+      ]
+    }
+  }
 }
