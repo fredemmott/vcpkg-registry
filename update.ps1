@@ -32,7 +32,12 @@ if ($Source -ne 'HEAD' -and ($Config.release -or $Source -eq "Release"))
   }
   $Vcpkg.'version-semver' = $Commit -replace '^v',''
 } else {
-  $CommitData = $(gh api /repos/${Repo}/commits?per_page=1 -q '.[0]') | ConvertFrom-Json
+  $Endpoint = "repos/${Repo}/commits?per_page=1"
+  if ($Config.branch)
+  {
+    $Endpoint += "&sha=$($Config.branch)"
+  }
+  $CommitData = $(gh api "${Endpoint}" -q '.[0]') | ConvertFrom-Json
   $Commit = $CommitData.sha
   $Config.commit = $Commit
   $CommitDate = $CommitData.commit.committer.date.ToString('yyyy-MM-dd')
