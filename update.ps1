@@ -9,7 +9,7 @@
 param(
   [Parameter(Mandatory=$True)]
   [String]$Port,
-  [ValidateSet("Release")]
+  [ValidateSet("Release", "HEAD")]
   [string]$Source
 )
 $ConfigPath = "ports/${Port}/version.json"
@@ -19,7 +19,7 @@ $Repo = $Config.repo
 $VcpkgPath= "ports/${Port}/vcpkg.json"
 $Vcpkg = Get-Content $VcpkgPath | ConvertFrom-Json -Depth 10 -AsHashtable
 
-if ($Config.release -or $Source -eq "Release")
+if ($Source -ne 'HEAD' -and ($Config.release -or $Source -eq "Release"))
 {
   $Commit = $( gh api /repos/${Repo}/releases -q '[.[] | select(.prerelease == false)].[0].tag_name' )
   $Config.release = $Commit
@@ -37,7 +37,7 @@ if ($Config.release -or $Source -eq "Release")
   $Config.commit = $Commit
   $CommitDate = $CommitData.commit.committer.date.ToString('yyyy-MM-dd')
 
-  if (-not ($Vcpkg.'version-date'.StartsWith($CommitDate))) {
+  if ((-not $Vcpkg.'version-date') -or -not ($Vcpkg.'version-date'.StartsWith($CommitDate))) {
     $Vcpkg.'version-date' = $CommitDate;
   } elseif ($Vcpkg['version-date'] -eq $CommitDate) {
     $Vcpkg.'version-date' = "${CommitDate}.1"
@@ -45,6 +45,16 @@ if ($Config.release -or $Source -eq "Release")
     $PreviousVersion = [int] $Vcpkg.'version-date'.split('.')[1]
     $Version = $PreviousVersion + 1
     $Vcpkg.'version-date' = "${CommitDate}.${Version}"
+  }
+
+  if ($Config.release) {
+    $Config.Remove('release')
+  }
+
+  foreach ($Key in $Vcpkg.keys.Clone()) {
+    if ($Key -match 'version-*' -and -not ($Key -eq 'version-date')) {
+      $Vcpkg.Remove($Key)
+    }
   }
 }
 
