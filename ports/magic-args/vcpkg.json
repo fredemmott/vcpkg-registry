@@ -1,6 +1,6 @@
 {
   "name": "magic-args",
-  "version-date": "2025-12-31",
+  "version-date": "2026-01-07",
   "description": "Ease-of-use-first argument parsing for C++23",
   "homepage": "https://github.com/fredemmott/magic_args",
   "license": "MIT",
