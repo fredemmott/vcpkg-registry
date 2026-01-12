@@ -4,6 +4,10 @@
       "baseline": "2025-12-26.2",
       "port-version": 0
     },
+    "felly": {
+      "baseline": "2026-01-12",
+      "port-version": 0
+    },
     "fredemmott-gui": {
       "baseline": "2025-09-07",
       "port-version": 0
